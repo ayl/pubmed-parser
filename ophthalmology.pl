@@ -56,10 +56,16 @@ foreach my $article (@{$data2->{PubmedArticle}}) {
     my $dateMon = $trueArt->{Journal}->{JournalIssue}->{PubDate}->{Month};
     my $dateDay = $trueArt->{Journal}->{JournalIssue}->{PubDate}->{Day};
     my $pmid = $article->{MedlineCitation}->{PMID}->{content};
+    my $pubstatus = $article->{PubmedData}->{PublicationStatus};
     my $authors = "";
 
     if (not(defined($dateDay))) {
         $dateDay = $article->{MedlineCitation}->{DateCreated}->{Day};
+    }
+    if ($pubstatus eq "aheadofprint" or not(defined($page)) or not(defined($issue)) or not(defined($vol))) {
+        $page = "epub ahead of print";
+        $issue = "";
+        $vol = "";
     }
 
     my $trueabstract = "";

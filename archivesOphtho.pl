@@ -61,6 +61,11 @@ foreach my $article (@{$data2->{PubmedArticle}}) {
     if (not(defined($dateDay))) {
         $dateDay = $article->{MedlineCitation}->{DateCreated}->{Day};
     }
+    if ($pubstatus eq "aheadofprint" or not(defined($page)) or not(defined($issue)) or not(defined($vol))) {
+        $page = "epub ahead of print";
+        $issue = "";
+        $vol = "";
+    }
 
     my $trueabstract = "";
     if (ref($abstract) eq "ARRAY") {
