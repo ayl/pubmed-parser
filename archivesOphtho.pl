@@ -105,7 +105,7 @@ foreach my $article (@{$data2->{PubmedArticle}}) {
     my $citation = "$dateYear $dateMon $dateDay;$issue($vol):$page";
     my $date = "$dateMon $dateDay";
     $abstract =~ s/\. ([A-Z]+:)/.\n$1/g;
-    $abstract =~ s/\. ([A-Z]{4,} )/.\n$1/g;
+    $abstract =~ s/\. ([A-Z]{5,} )/.\n$1:/g;
 
     if ($curdate eq "") {
         $curdate = $date;
